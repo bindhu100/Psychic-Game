@@ -18,10 +18,10 @@ var countGuessesLeft = function (){
 // Guesses so far
 
 var userGuessSoFar = function(){
-    document.querySelector("#guesses").innerHTML = "Guesses so far:" + guessSoFar.join(' ');
+    document.querySelector("#guesses").innerHTML = "Guesses so far:" + guessSoFar.join(', ');
 }
 
-// countGuessesLeft();
+countGuessesLeft();
 
 // To restart the game
 
