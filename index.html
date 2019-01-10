@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>The Psychic Game</h1>
-    <p>Guess what letter I'm thinking of</p>
-    <p>Wins:</p>
-    <p>Losses:</p>
-    <p>Guesses Left:</p>
-    <p>Your Guesses So Far:</p>
+	<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<title>Document</title>
+			<!-- bootstrap stylesheet link -->
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <script src="game.js"></script>
-</body>
+			<!-- link style sheet -->
+			<link rel="stylesheet" href="assets/css/style.css">
+
+			<!-- favicon -->
+			<link rel="icon" href="./assets/images/favicon.ico">
+
+	</head>
+
+		<body>
+
+			<header>
+				<div id="header">
+					<h1> The Psychic Game </h1>
+				</div>
+			</header>	
+
+			<div class="container">
+				<h2 id=liHeader>Guess what letter I'm thinking of </h2>
+				<ul class="list-group">
+						<li class="list-group-item list-group-item-success" id="wins">Wins:</li>
+						<li class="list-group-item list-group-item-danger" id="losses">Losses:</li>
+						<li class="list-group-item list-group-item-warning" id="guessesLeft">Guesses Left: </li>
+						<li class="list-group-item list-group-item-secondary" id="guesses">Guesses so far: </li>
+				</ul>
+
+
+
+			</div><!-- .container -->
+			<footer class="fixed-bottom mt-10">
+				Copyright&nbsp;&#169;
+			</footer>
+			<!-- link javascript -->
+			<script type="text/javascript" src="./assets/javascript/game.js"></script>
+			<!-- <script type="text/javascript" src="assets/javascript/game.js"></script> -->
+		</body>
 </html>
