@@ -18,7 +18,7 @@ var countGuessesLeft = function (){
 // Guesses so far
 
 var userGuessSoFar = function(){
-    document.querySelector("#guesses").innerHTML = "Guesses so far:" + guessSoFar.join(', ');
+    document.querySelector("#guesses").innerHTML = "Guesses so far: " + guessSoFar.join(', ');
 }
 
 countGuessesLeft();
@@ -44,7 +44,7 @@ document.onkeyup = function(event){
     // wins
     if (userGuess === coputerGuess){
         wins++;
-        document.querySelector("#wins").innerHTML = "Wins:" + wins;
+        document.querySelector("#wins").innerHTML = "Wins: " + wins;
         restart();
     }
 
@@ -52,7 +52,7 @@ document.onkeyup = function(event){
     else if(guessesLeft === 0){
         losses++;
 
-        document.querySelector("#losses").innerHTML = "Losses:" + losses;
+        document.querySelector("#losses").innerHTML = "Losses: " + losses;
         restart();
     }
 };
