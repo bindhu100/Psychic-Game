@@ -12,18 +12,18 @@ var guessSoFar = [];
 
 // Guesses Left
 var countGuessesLeft = function (){
-    document.getElementById("#guessesLeft").innerHTML="Guesses Left: " + guessesLeft;
+    document.getElementById("guessesLeft").innerHTML="Guesses Left: " + guessesLeft;
 }
 
-// Guesses so far
+// Guesses so far - to display the letter which one user enter
 
 var userGuessSoFar = function(){
-    document.getElementById("#guesses").innerHTML = "Guesses so far: " + guessSoFar.join(', ');
+    document.getElementById("guesses").innerHTML = "Guesses so far: " + guessSoFar.join(', ');
 }
 
 countGuessesLeft();
 
-// To restart the game
+// for restarting the game
 
 var restart = function(){
     guessesLeft = 9;
@@ -36,23 +36,23 @@ var restart = function(){
 document.onkeyup = function(event){
     guessesLeft--; 
 
-    var userGuess = event.key;
+    var userGuess = event.key.toUpperCase();
     guessSoFar.push(userGuess);
     countGuessesLeft();
     userGuessSoFar();
 
-    // wins
+    // wins - if computer guess and user guess are matching
     if (userGuess === coputerGuess){
         wins++;
-        document.getElementById("#wins").innerHTML = "Wins: " + wins;
+        document.getElementById("wins").innerHTML = "Wins: " + wins;
         restart();
     }
 
-    // losses
+    // losses - if computer guesses and user guess is are matching
     else if(guessesLeft === 0){
         losses++;
 
-        document.getElementById("#losses").innerHTML = "Losses: " + losses;
+        document.getElementById("losses").innerHTML = "Losses: " + losses;
         restart();
     }
 };
