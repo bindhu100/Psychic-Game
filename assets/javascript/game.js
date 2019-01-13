@@ -1,69 +1,68 @@
 // *********background animation*******
 var colors = new Array(
-    [62,35,255],
-    [60,255,60],
-    [255,35,98],
-    [45,175,230],
-    [255,0,255],
-    [255,128,0]);
-  
-  var step = 0;
-  //color table indices for: 
-  // current color left
-  // next color left
-  // current color right
-  // next color right
-  var colorIndices = [0,1,2,3];
-  
-  //transition speed
-  var gradientSpeed = 0.002;
-  
-  function updateGradient()
-  {
-    
-    if ( $===undefined ) return;
-    
-  var c0_0 = colors[colorIndices[0]];
-  var c0_1 = colors[colorIndices[1]];
-  var c1_0 = colors[colorIndices[2]];
-  var c1_1 = colors[colorIndices[3]];
-  
-  var istep = 1 - step;
-  var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
-  var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
-  var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
-  var color1 = "rgb("+r1+","+g1+","+b1+")";
-  
-  var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
-  var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
-  var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
-  var color2 = "rgb("+r2+","+g2+","+b2+")";
-  
-   $('#gradient').css({
-     background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
-      background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
-    
-    step += gradientSpeed;
-    if ( step >= 1 )
-    {
-      step %= 1;
-      colorIndices[0] = colorIndices[1];
-      colorIndices[2] = colorIndices[3];
-      
-      //pick two new target color indices
-      //do not pick the same as the current one
-      colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-      colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
-      
-    }
-  }
-  
-  setInterval(updateGradient,10);
+  [62,35,255],
+  [60,255,60],
+  [255,35,98],
+  [45,175,230],
+  [255,0,255],
+  [255,128,0]);
 
- 
+var step = 0;
+//color table indices for: 
+// current color left
+// next color left
+// current color right
+// next color right
+var colorIndices = [0,1,2,3];
+
+//transition speed
+var gradientSpeed = 0.002;
+
+function updateGradient()
+{
+  
+  if ( $===undefined ) return;
+  
+var c0_0 = colors[colorIndices[0]];
+var c0_1 = colors[colorIndices[1]];
+var c1_0 = colors[colorIndices[2]];
+var c1_1 = colors[colorIndices[3]];
+
+var istep = 1 - step;
+var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+var color1 = "rgb("+r1+","+g1+","+b1+")";
+
+var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+var color2 = "rgb("+r2+","+g2+","+b2+")";
+
+ $('#gradient').css({
+   background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
+    background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
+  
+  step += gradientSpeed;
+  if ( step >= 1 )
+  {
+    step %= 1;
+    colorIndices[0] = colorIndices[1];
+    colorIndices[2] = colorIndices[3];
+    
+    //pick two new target color indices
+    //do not pick the same as the current one
+    colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+    colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+    
+  }
+}
+
+setInterval(updateGradient,10);
+
+
 
 // *********background animation*******
-
 
 //*******/ game function********
 
@@ -74,20 +73,19 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessSoFar = [];
-// var letterGuessComp = null;
 
- // computer pick random letters from computerAlphabet arry
- var coputerGuess = computerAlphabet [Math.floor(Math.random() *computerAlphabet.length)];
+// computer pick random letters from computerAlphabet arry
+var coputerGuess = computerAlphabet [Math.floor(Math.random() *computerAlphabet.length)];
 
 // Guesses Left
 var countGuessesLeft = function (){
-    document.getElementById("guessesLeft").innerHTML="Guesses Left: " + guessesLeft;
+  document.getElementById("guessesLeft").innerHTML="Guesses Left: " + guessesLeft;
 }
 
 // Guesses so far - to display the letter which one user enter
 
 var userGuessSoFar = function(){
-    document.getElementById("guesses").innerHTML = "Guesses so far: " + guessSoFar.join(', ');
+  document.getElementById("guesses").innerHTML = "Guesses so far: " + guessSoFar.join(', ');
 }
 
 countGuessesLeft();
@@ -95,50 +93,34 @@ countGuessesLeft();
 // for restarting the game
 
 var restart = function(){
-    guessesLeft = 9;
-    guessSoFar = [];
-    coputerGuess = computerAlphabet [Math.floor(Math.random() *computerAlphabet.length)]; 
+  guessesLeft = 9;
+  guessSoFar = [];
+  coputerGuess = computerAlphabet [Math.floor(Math.random() *computerAlphabet.length)]; 
 
 }
 
 // when user enter a key
 document.onkeyup = function(event){
-    guessesLeft--; 
+  guessesLeft--; 
 
-    var userGuess = event.key.toUpperCase();
-    guessSoFar.push(userGuess);
-    countGuessesLeft();
-    userGuessSoFar();
+  var userGuess = event.key.toUpperCase();
+  guessSoFar.push(userGuess);
+  countGuessesLeft();
+  userGuessSoFar();
 
-    // wins - if computer guess and user guess are matching
-    if (userGuess === coputerGuess){
-        wins++;
-        document.getElementById("wins").innerHTML = "Wins: " + wins;
-        restart();
-    }
+  // wins - if computer guess and user guess are matching
+  if (userGuess === coputerGuess){
+      wins++;
+      document.getElementById("wins").innerHTML = "Wins: " + wins;
+      restart();
+  }
 
-    // losses - if computer guesses and user guess is are matching
-    else if(guessesLeft === 0){
-        losses++;
+  // losses - if computer guesses and user guess is are matching
+  else if(guessesLeft === 0){
+      losses++;
 
-        document.getElementById("losses").innerHTML = "Losses: " + losses;
-        restart();
-    }
+      document.getElementById("losses").innerHTML = "Losses: " + losses;
+      restart();
+  }
 };
 
-// **********Coming Soon!!!************
-var myIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none"; 
-
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 2500);    
-}
